@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(160deg, #444, #ddd);
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  width: 100%;
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(256, 256, 256, 0.4);
+}
+
+.form-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.form-wrapper form {
+  display: flex;
+  width: 400%;
+}
+
+.form-wrapper form .page {
+  width: 25%;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-wrapper form .page .title {
+  text-align: left;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.form-wrapper form .page .field {
+  position: relative;
+  height: 40px;
+  width: 100%;
+}
+
+.form-wrapper form .page .field:not(:last-child) {
+  margin: 2rem 0 2.8rem 0;
+}
+
+.form-wrapper form .page .field:last-child {
+  margin: 0 0 0.4rem 0;
+}
+
+.form-wrapper form .page .field .label {
+  position: absolute;
+  top: -30px;
+  font-weight: 500;
+}
+
+.form-wrapper form .page .field input {
+  height: 100%;
+  width: 100%;
+  padding-left: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-size: 1.1rem;
+}
+
+.form-wrapper form .page .field select {
+  height: 100%;
+  width: 100%;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-wrapper form .page .field button {
+  width: 100%;
+  height: 100%;
+  background-color: #dcc4d0;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1.8px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-wrapper form .page .field button:hover {
+  letter-spacing: 2.6px;
+}
+
+.form-wrapper form .page .field.btns {
+  display: flex;
+}
+
+.form-wrapper form .page .field.btns button:first-child {
+  margin-right: 1rem;
+}
+
+.form-wrapper form .page .field button:focus,
+.form-wrapper form .page .field input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(256, 256, 256, 0.8);
+}
+
+/* PROGRESS BAR *************/
+.progress-bar {
+  width: 100%;
+  display: inline-flex;
+  color: #333;
+  margin: 0.8rem 0 1.8rem 0;
+}
+
+.progress-bar .step {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.progress-bar .step p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+
+/* ADDING CLASS active FROM JS */
+.progress-bar .step p.active {
+  transform: scale(1.3);
+}
+
+.progress-bar .step .bullet {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  padding: 1rem;
+  border: 2px solid #333;
+  display: inline-block;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+/* ADDING CLASS active FROM JS */
+.progress-bar .step .bullet.active {
+  border-color: #d43f8d;
+  background-color: #d43f8d;
+}
+
+.progress-bar .step .bullet::after,
+.progress-bar .step .bullet::before {
+  position: absolute;
+  content: "";
+  bottom: 0.8rem;
+  right: -2.6rem;
+  height: 3px;
+  width: 2rem;
+  background-color: #262626;
+}
+
+/* ADDING CLASS active FROM JS */
+.progress-bar .step .bullet.active::after {
+  background-color: #d43f8d;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: anim 0.3s linear forwards;
+}
+
+/* ANIM PROGRES BAR */
+@keyframes anim {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.progress-bar .step:last-child .bullet::after,
+.progress-bar .step:last-child .bullet::before {
+  display: none;
+}
+
+.progress-bar .step .bullet span,
+.progress-bar .step .bullet .check {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.1rem;
+  left: 50%;
+  top: 12%;
+  transform: translateX(-50%);
+  cursor: default;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* ADDING CLASS active FROM JS */
+
+.progress-bar .step .bullet .check,
+.progress-bar .step .bullet.active span {
+  opacity: 0;
+}
+
+.progress-bar .step .bullet span,
+.progress-bar .step .bullet.active .check {
+  opacity: 1;
+}
